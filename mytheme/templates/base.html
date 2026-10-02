@@ -3,7 +3,6 @@
 <head>
   <title>{{ title or Configs.ctf_name }}</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/themes/mytheme/static/custom/css/capture-the-cup.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
 
@@ -13,6 +12,7 @@
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
 
+  <link rel="stylesheet" href="{{ url_for('views.themes', theme='mytheme', path='custom/css/capture-the-cup.css') }}">
 
   {{ Plugins.styles }}
 
@@ -67,10 +67,10 @@
   {{ Assets.js("assets/js/page.js") }}
 {% endblock %}
 
+<script src="{{ url_for('views.themes', theme='mytheme', path='custom/js/capture-the-cup.js') }}"></script>
 
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}
-  <script src="/themes/mytheme/static/custom/js/capture-the-cup.js"></script>
 </body>
 </html>
