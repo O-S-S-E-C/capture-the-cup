@@ -68,6 +68,21 @@
 {% endblock %}
 
 <script src="{{ url_for('views.themes_beta', theme='mytheme', path='custom/js/capture-the-cup.js') }}"></script>
+<script>
+  (function () {
+    function removeLegacyEventLabel() {
+      document.querySelectorAll('.ct-event-label').forEach(function (label) {
+        label.remove();
+      });
+    }
+
+    removeLegacyEventLabel();
+    new MutationObserver(removeLegacyEventLabel).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script>
 
 {{ Plugins.scripts }}
 
