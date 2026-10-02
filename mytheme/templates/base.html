@@ -12,7 +12,7 @@
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
 
-  <link rel="stylesheet" href="{{ url_for('views.themes', theme='mytheme', path='custom/css/capture-the-cup.css') }}">
+  <link rel="stylesheet" href="{{ url_for('views.themes_beta', theme='mytheme', path='static/custom/css/capture-the-cup.css') }}">
 
   {{ Plugins.styles }}
 
@@ -67,7 +67,7 @@
   {{ Assets.js("assets/js/page.js") }}
 {% endblock %}
 
-<script src="{{ url_for('views.themes', theme='mytheme', path='custom/js/capture-the-cup.js') }}"></script>
+<script src="{{ url_for('views.themes_beta', theme='mytheme', path='static/custom/js/capture-the-cup.js') }}"></script>
 
 {{ Plugins.scripts }}
 
