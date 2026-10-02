@@ -1,0 +1,40 @@
+name: Deploy CTFd theme
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to VM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy over SSH
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          set -eu
+
+          mkdir -p "$HOME/.ssh"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/deploy_key"
+          chmod 600 "$HOME/.ssh/deploy_key"
+
+          ssh \
+            -i "$HOME/.ssh/deploy_key" \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=accept-new \
+            "$SSH_USER@$SSH_HOST" <<'REMOTE_COMMANDS'
+          set -eu
+          cd /srv/theme-repo
+          sudo git fetch origin
+          sudo git pull --ff-only
+          cd /srv/ctfd
+          sudo docker compose restart ctfd
+          REMOTE_COMMANDS
