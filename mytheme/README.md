@@ -1,30 +1,50 @@
-# mytheme — Capture the Cup CTFd theme
+# Capture the Cup CTFd theme
 
-Dark broadcast-style theme with a navy/charcoal arena background, bright cyan,
-red accents, and colors pulled from the event logo.
+An editable CTFd theme repository for the Capture the Cup event.
 
-Based on CTFd's stock `core` theme, with these additions layered on top:
+## Structure
 
-- `static/custom/css/capture-the-cup.css` — logo-inspired palette, dark surfaces, card/button/table restyle, hero styles
-- `static/custom/js/capture-the-cup.js` — navbar event badge + card entrance animation
-- `static/custom/img/capture-the-cup-logo.png` — the event logo
-- `static/custom/hero-snippet.html` — ready-to-paste homepage hero HTML
+- `templates/` — page HTML and layout overrides.
+- `static/custom/css/capture-the-cup.css` — dark broadcast-style visual design.
+- `static/custom/js/capture-the-cup.js` — optional navbar label and card entrance animation.
+- `static/custom/img/` — place the event logo here later.
+- `static/assets/` — reserved for CTFd's compiled theme assets.
 
-The CSS/JS are linked directly in `templates/base.html` (search for
-"capture-the-cup" to find the two added lines), so they load on every page
-without touching CTFd's admin settings.
+## Deployment
 
-## Setting the homepage hero
+Mount this folder into the CTFd container as:
 
-Go to **Admin -> Pages -> index** in CTFd and paste the contents of
-`static/custom/hero-snippet.html` into the page editor (switch it to raw
-HTML / source mode first). It renders the logo, title, a welcome line, and a
-button to the challenges page. Edit the text directly in that admin page
-whenever you want to change the welcome message.
+```yaml
+- /srv/theme-repo/mytheme:/opt/CTFd/CTFd/themes/mytheme:ro
+```
 
-## Deploying
+Then select `mytheme` in **Admin → Config → Theme**.
 
-This folder is meant to be bind-mounted into the running ctfd container at
-`/opt/CTFd/CTFd/themes/mytheme` (see the cloud-init script / docker-compose
-override). After deploying, select "mytheme" in
-**Admin -> Config -> Theme**.
+The custom CSS and JavaScript are linked directly from `static/custom/`; they are intentionally not passed through CTFd's Vite manifest system. This prevents CTFd from changing them into incorrect paths such as `static/static/*.min.css`.
+
+## Updating later
+
+The Git repository is the source of truth. After pushing changes:
+
+```bash
+cd /srv/theme-repo/mytheme
+sudo git pull --ff-only
+cd /srv/ctfd
+sudo docker compose restart ctfd
+```
+
+Template changes usually appear after restarting CTFd. If CSS or JavaScript is cached, use a hard refresh or add/change a query-string version to the links in `templates/base.html`.
+
+## Adding the logo later
+
+Place the logo at:
+
+```text
+static/custom/img/capture-the-cup-logo.png
+```
+
+You can then reference it in a CTFd page or template with:
+
+```html
+<img src="/themes/mytheme/static/custom/img/capture-the-cup-logo.png" alt="Capture the Cup">
+```
