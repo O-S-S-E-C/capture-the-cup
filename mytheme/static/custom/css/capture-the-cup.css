@@ -1,0 +1,300 @@
+/*
+ * Capture the Cup — CTFd custom theme
+ * Palette sampled/inspired by the event logo:
+ * Navy #071426 · Blue #1675C4 · Red #E51E4E · White #F7FAFF
+ * Paste this into CTFd's Custom CSS field or include it in your theme.
+ */
+
+:root {
+  --ct-navy-950: #050b16;
+  --ct-navy-900: #071426;
+  --ct-navy-800: #0c1d35;
+  --ct-navy-700: #122b4a;
+  --ct-blue: #1675c4;
+  --ct-blue-bright: #36a9ff;
+  --ct-red: #e51e4e;
+  --ct-red-bright: #ff3f67;
+  --ct-white: #f7faff;
+  --ct-muted: #aebdd1;
+  --ct-border: rgba(100, 169, 226, 0.28);
+  --ct-shadow: 0 14px 38px rgba(0, 0, 0, 0.34);
+}
+
+/* Overall event atmosphere */
+html,
+body {
+  background:
+    linear-gradient(rgba(7, 20, 38, 0.93), rgba(5, 11, 22, 0.98)),
+    radial-gradient(circle at 15% 0%, rgba(22, 117, 196, 0.22), transparent 34%),
+    radial-gradient(circle at 92% 18%, rgba(229, 30, 78, 0.16), transparent 30%),
+    var(--ct-navy-950) !important;
+  color: var(--ct-white) !important;
+}
+
+body {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(circle at 15% 0%, rgba(22,117,196,.22), transparent 34%),
+    radial-gradient(circle at 92% 18%, rgba(229,30,78,.16), transparent 30%),
+    linear-gradient(180deg, #071426 0%, #050b16 100%) !important;
+  background-size: 36px 36px, 36px 36px, auto, auto, auto !important;
+}
+
+/* Header / navbar */
+.navbar,
+nav.navbar {
+  background: rgba(5, 11, 22, 0.9) !important;
+  border-bottom: 1px solid var(--ct-border) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,.26);
+  backdrop-filter: blur(12px);
+}
+
+.navbar-brand,
+.navbar .nav-link,
+.navbar a {
+  color: var(--ct-white) !important;
+  font-weight: 700;
+}
+
+.navbar .nav-link:hover,
+.navbar a:hover {
+  color: var(--ct-red-bright) !important;
+}
+
+/* Main content cards */
+.card,
+.jumbotron,
+.modal-content,
+.table-responsive,
+.alert,
+.form-control,
+.custom-select,
+select,
+textarea,
+input {
+  background-color: rgba(12, 29, 53, 0.92) !important;
+  color: var(--ct-white) !important;
+  border-color: var(--ct-border) !important;
+}
+
+.card,
+.jumbotron,
+.table-responsive {
+  border-radius: 14px !important;
+  box-shadow: var(--ct-shadow);
+}
+
+.card-header,
+.card-footer {
+  background: rgba(22, 117, 196, 0.10) !important;
+  border-color: var(--ct-border) !important;
+}
+
+.card-title,
+h1, h2, h3, h4, h5,
+strong, label {
+  color: var(--ct-white) !important;
+}
+
+p,
+.text-muted,
+small,
+.help-block {
+  color: var(--ct-muted) !important;
+}
+
+/* Links */
+a {
+  color: var(--ct-blue-bright);
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+a:hover {
+  color: var(--ct-red-bright);
+  text-shadow: 0 0 12px rgba(255, 63, 103, .35);
+}
+
+/* Buttons: red primary, blue secondary */
+.btn {
+  border-radius: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: .02em;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.btn-primary,
+.btn-success,
+.btn-danger {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--ct-red), #b5103a) !important;
+  border-color: var(--ct-red) !important;
+  box-shadow: 0 7px 18px rgba(229, 30, 78, .27);
+}
+
+.btn-secondary,
+.btn-info,
+.btn-outline-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--ct-blue), #0d4c8b) !important;
+  border-color: var(--ct-blue) !important;
+  box-shadow: 0 7px 18px rgba(22, 117, 196, .25);
+}
+
+.btn-outline-secondary,
+.btn-light {
+  color: var(--ct-white) !important;
+  background: transparent !important;
+  border-color: var(--ct-border) !important;
+}
+
+/* Inputs and focus states */
+.form-control::placeholder,
+textarea::placeholder {
+  color: #8295ad !important;
+}
+
+.form-control:focus,
+.custom-select:focus,
+select:focus,
+textarea:focus,
+input:focus {
+  border-color: var(--ct-blue-bright) !important;
+  box-shadow: 0 0 0 .2rem rgba(54, 169, 255, .18) !important;
+}
+
+/* Tables, challenge list, scoreboard */
+.table,
+.table td,
+.table th {
+  color: var(--ct-white) !important;
+  border-color: rgba(100, 169, 226, .16) !important;
+}
+
+.table thead th {
+  background: rgba(22, 117, 196, .20) !important;
+  color: var(--ct-blue-bright) !important;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: .78rem;
+}
+
+.table tbody tr {
+  transition: background .18s ease, transform .18s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(229, 30, 78, .09) !important;
+}
+
+/* Challenge/category accents */
+.challenge-button,
+.category-header,
+.list-group-item {
+  background: rgba(12, 29, 53, .9) !important;
+  border-color: var(--ct-border) !important;
+  color: var(--ct-white) !important;
+}
+
+.challenge-button:hover,
+.list-group-item:hover {
+  background: linear-gradient(90deg, rgba(22,117,196,.24), rgba(229,30,78,.13)) !important;
+  border-color: var(--ct-blue-bright) !important;
+}
+
+.category-header {
+  border-left: 4px solid var(--ct-red) !important;
+  box-shadow: 0 5px 18px rgba(0,0,0,.2);
+}
+
+/* Badges, alerts, progress */
+.badge-primary,
+.badge-info {
+  background: var(--ct-blue) !important;
+}
+
+.badge-danger,
+.badge-success {
+  background: var(--ct-red) !important;
+}
+
+.progress {
+  background: rgba(255,255,255,.10) !important;
+  border-radius: 999px !important;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--ct-blue), var(--ct-red)) !important;
+}
+
+.alert {
+  border-left: 4px solid var(--ct-blue-bright) !important;
+}
+
+/* Decorative event flare on the page */
+main.container::before,
+.container::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: 0 0 22px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, var(--ct-blue), var(--ct-red), transparent);
+  box-shadow: 0 0 18px rgba(54,169,255,.35);
+}
+
+/* Footer */
+footer,
+.footer {
+  color: var(--ct-muted) !important;
+  border-top: 1px solid rgba(100,169,226,.16);
+  background: rgba(5, 11, 22, .66) !important;
+}
+
+/* Improve readability on smaller screens */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.45rem; }
+  .card, .jumbotron { border-radius: 10px !important; }
+}
+
+/* Optional: hide this block if your CTFd theme already has a strong hero */
+.ct-capture-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2.3rem 1.5rem;
+  border: 1px solid var(--ct-border);
+  border-radius: 18px;
+  background:
+    linear-gradient(120deg, rgba(7,20,38,.92), rgba(12,29,53,.82)),
+    url('/themes/mytheme/static/custom/img/capture-the-cup.png') center/cover;
+  box-shadow: var(--ct-shadow);
+}
+
+.ct-capture-hero::after {
+  content: "";
+  position: absolute;
+  inset: -50% -20%;
+  background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.10) 48%, transparent 56%);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.ct-capture-hero h1,
+.ct-capture-hero p {
+  position: relative;
+  z-index: 1;
+}
+
+.ct-capture-hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  text-shadow: 3px 3px 0 rgba(22,117,196,.55), 6px 6px 0 rgba(229,30,78,.28);
+}
