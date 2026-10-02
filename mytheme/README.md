@@ -7,7 +7,7 @@ Based on CTFd's stock `core` theme, with these additions layered on top:
 
 - `static/custom/css/capture-the-cup.css` — palette, card/button/table restyle, hero styles
 - `static/custom/js/capture-the-cup.js` — navbar event badge + card entrance animation
-- `static/custom/img/capture-the-cup-logo.png` — the event logo
+- `assets/img/logo1.png` — the event logo source, copied to `static/img/logo1.png` by Vite
 - `static/custom/hero-snippet.html` — ready-to-paste homepage hero HTML
 
 The CSS/JS are linked directly in `templates/base.html` (search for
