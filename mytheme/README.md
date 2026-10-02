@@ -1,11 +1,11 @@
 # mytheme — Capture the Cup CTFd theme
 
-Light theme (white/pale-blue background, dark text everywhere for contrast),
-colors pulled from the event logo: red #E8384F, blue #2FA3F7. No navy.
+Dark broadcast-style theme with a navy/charcoal arena background, bright cyan,
+red accents, and colors pulled from the event logo.
 
 Based on CTFd's stock `core` theme, with these additions layered on top:
 
-- `static/custom/css/capture-the-cup.css` — palette, card/button/table restyle, hero styles
+- `static/custom/css/capture-the-cup.css` — logo-inspired palette, dark surfaces, card/button/table restyle, hero styles
 - `static/custom/js/capture-the-cup.js` — navbar event badge + card entrance animation
 - `static/custom/img/capture-the-cup-logo.png` — the event logo
 - `static/custom/hero-snippet.html` — ready-to-paste homepage hero HTML
