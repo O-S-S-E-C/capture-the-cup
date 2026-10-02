@@ -1,30 +1,26 @@
 # mytheme — Capture the Cup CTFd theme
 
-Based on CTFd's stock `core` theme, with two additions layered on top:
+Light theme (white/pale-blue background, dark text everywhere for contrast),
+colors pulled from the event logo: red #E8384F, blue #2FA3F7. No navy.
 
-- `static/custom/css/capture-the-cup.css` — event color palette, card/button restyle
+Based on CTFd's stock `core` theme, with these additions layered on top:
+
+- `static/custom/css/capture-the-cup.css` — palette, card/button/table restyle, hero styles
 - `static/custom/js/capture-the-cup.js` — navbar event badge + card entrance animation
+- `static/custom/img/capture-the-cup-logo.png` — the event logo
+- `static/custom/hero-snippet.html` — ready-to-paste homepage hero HTML
 
-Both are linked directly in `templates/base.html` (search for "capture-the-cup"
-to find the two added lines), so they load on every page without touching
-CTFd's admin settings.
+The CSS/JS are linked directly in `templates/base.html` (search for
+"capture-the-cup" to find the two added lines), so they load on every page
+without touching CTFd's admin settings.
 
-## Using the hero banner block
+## Setting the homepage hero
 
-The CSS includes an optional `.ct-capture-hero` block (big event title banner).
-It isn't wired into any template automatically. To use it, go to
-**Admin -> Pages -> index** in CTFd and paste something like:
-
-    <div class="ct-capture-hero">
-      <h1>Capture the Cup</h1>
-      <p>Welcome to the event.</p>
-    </div>
-
-## Optional: event logo/banner image
-
-Drop a file named `capture-the-cup.png` into `static/custom/img/` if you want
-the hero block's background photo to show. Safe to skip — the gradient still
-renders fine without it.
+Go to **Admin -> Pages -> index** in CTFd and paste the contents of
+`static/custom/hero-snippet.html` into the page editor (switch it to raw
+HTML / source mode first). It renders the logo, title, a welcome line, and a
+button to the challenges page. Edit the text directly in that admin page
+whenever you want to change the welcome message.
 
 ## Deploying
 
