@@ -2,6 +2,10 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.ct-event-label').forEach(function (label) {
+      label.remove();
+    });
+
     var cards = document.querySelectorAll('.challenge-button, .list-group-item, .card');
     cards.forEach(function (card, index) {
       card.style.animation = 'ct-card-in .42s ease both';
