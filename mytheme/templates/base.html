@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
 <head>
   <title>{{ title or Configs.ctf_name }}</title>
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
 
-  <link rel="stylesheet" href="{{ url_for('views.themes_beta', theme='mytheme', path='custom/css/capture-the-cup.css') }}">
+  <link rel="stylesheet" href="{{ url_for('views.themes_beta', theme='mytheme', path='custom/css/capture-the-cup.css') }}?v=2">
 
   {{ Plugins.styles }}
 
@@ -65,7 +65,7 @@
   {{ Assets.js("assets/js/page.js") }}
 {% endblock %}
 
-<script src="{{ url_for('views.themes_beta', theme='mytheme', path='custom/js/capture-the-cup.js') }}"></script>
+<script src="{{ url_for('views.themes_beta', theme='mytheme', path='custom/js/capture-the-cup.js') }}?v=2"></script>
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}

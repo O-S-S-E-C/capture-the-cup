@@ -87,10 +87,10 @@ nav.navbar {
 .form-control:focus, .form-select:focus, select:focus, textarea:focus, input:focus { border-color: var(--ct-cyan) !important; box-shadow: 0 0 0 4px rgba(56, 189, 248, .14) !important; }
 label, .form-label { color: var(--ct-ink); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 
-.table { --bs-table-bg: transparent; --bs-table-bg-type: transparent; --bs-table-bg-state: transparent; --bs-table-color: var(--ct-ink-soft); --bs-table-color-type: var(--ct-ink-soft); --bs-table-color-state: var(--ct-ink-soft); --bs-table-striped-bg: rgba(56, 189, 248, .035); --bs-table-hover-bg: rgba(56, 189, 248, .08); margin-bottom: 0; }
-.table > :not(caption) > * > * { color: var(--ct-ink-soft) !important; background-color: var(--ct-panel) !important; box-shadow: none !important; }
-.table > tbody > tr:nth-of-type(odd) > * { color: var(--ct-ink-soft) !important; background-color: rgba(56, 189, 248, .035) !important; }
-.table > tbody > tr:hover > * { color: var(--ct-ink) !important; background-color: rgba(56, 189, 248, .08) !important; }
+.table { --bs-table-bg: var(--ct-panel); --bs-table-bg-type: var(--ct-panel); --bs-table-bg-state: var(--ct-panel); --bs-table-color: var(--ct-ink-soft); --bs-table-color-type: var(--ct-ink-soft); --bs-table-color-state: var(--ct-ink-soft); --bs-table-striped-bg: rgba(56, 189, 248, .035); --bs-table-hover-bg: rgba(56, 189, 248, .08); margin-bottom: 0; }
+.table > :not(caption) > * > * { color: var(--ct-ink-soft); background-color: var(--ct-panel); box-shadow: none; }
+.table > tbody > tr:nth-of-type(odd) > * { background-color: rgba(56, 189, 248, .035); }
+.table > tbody > tr:hover > * { color: var(--ct-ink); background-color: rgba(56, 189, 248, .08); }
 .table thead th { color: var(--ct-cyan-bright); background: rgba(56, 189, 248, .08); border-bottom: 2px solid var(--ct-cyan); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
 .table td, .table th { padding: .9rem 1rem; border-color: var(--ct-border); vertical-align: middle; }
 .table tbody tr { transition: background .18s ease; }
