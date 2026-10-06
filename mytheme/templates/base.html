@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
-  <title>{{ title or Configs.ctf_name }}</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/themes/mytheme/static/img/logo1.png" type="image/png">
-<link rel="stylesheet" href="/themes/mytheme/static/custom/css/capture-the-cup.css?v=2">
-<script src="/themes/mytheme/static/custom/js/capture-the-cup.js?v=2"></script>
+<title>{{ title or Configs.ctf_name }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/themes/mytheme/static/img/logo1.png?v=2" type="image/png">
 
   {{ meta | safe }}
 
@@ -14,30 +12,30 @@
     {{ Assets.css("assets/scss/main.scss") }}
   {% endblock %}
 
-  <link rel="stylesheet" href="{{ url_for('views.themes_beta', theme='mytheme', path='custom/css/capture-the-cup.css') }}?v=2">
+<link rel="stylesheet" href="/themes/mytheme/static/custom/css/capture-the-cup.css?v=2">
 
   {{ Plugins.styles }}
 
   <script type="text/javascript">
-      window.init = {
-          'urlRoot': "{{ request.script_root }}",
-          'csrfNonce': "{{ Session.nonce }}",
-          'userMode': "{{ Configs.user_mode }}",
-          'userId': {{ Session.id }},
-          'userName': {{ User.name | tojson }},
-          'userEmail': {{ User.email | tojson }},
-          'userVerified': {{ User.verified | tojson }},
-          'teamId': {{ Team.id | tojson }},
-          'teamName': {{ Team.name | tojson }},
-          'start': {{ Configs.start | tojson }},
-          'end': {{ Configs.end | tojson }},
-          'themeSettings': {{ Configs.theme_settings | tojson }},
-          'eventSounds': [
-            "/themes/mytheme/static/sounds/notification.webm",
-            "/themes/mytheme/static/sounds/notification.mp3",
+window.init = {
+'urlRoot': "{{ request.script_root }}",
+'csrfNonce': "{{ Session.nonce }}",
+'userMode': "{{ Configs.user_mode }}",
+'userId': {{ Session.id }},
+'userName': {{ User.name | tojson }},
+'userEmail': {{ User.email | tojson }},
+'userVerified': {{ User.verified | tojson }},
+'teamId': {{ Team.id | tojson }},
+'teamName': {{ Team.name | tojson }},
+'start': {{ Configs.start | tojson }},
+'end': {{ Configs.end | tojson }},
+'themeSettings': {{ Configs.theme_settings | tojson }},
+'eventSounds': [
+"/themes/mytheme/static/sounds/notification.webm",
+"/themes/mytheme/static/sounds/notification.mp3",
           ],
-      }
-  </script>
+}
+</script>
 
   {{ Configs.theme_header }}
 </head>
@@ -52,13 +50,13 @@
 {% include "components/snackbar.html" %}
 
 <footer class="footer">
-  <div class="container text-center">
-    <a href="https://ctfd.io" class="text-secondary">
-      <small class="text-muted">
+<div class="container text-center">
+<a href="https://ctfd.io" class="text-secondary">
+<small class="text-muted">
         {% trans %}Powered by CTFd{% endtrans %}
-      </small>
-    </a>
-  </div>
+</small>
+</a>
+</div>
 </footer>
 
 {% include "components/notifications.html" %}
@@ -67,7 +65,7 @@
   {{ Assets.js("assets/js/page.js") }}
 {% endblock %}
 
-<script src="{{ url_for('views.themes_beta', theme='mytheme', path='custom/js/capture-the-cup.js') }}?v=2"></script>
+<script src="/themes/mytheme/static/custom/js/capture-the-cup.js?v=2"></script>
 {{ Plugins.scripts }}
 
 {{ Configs.theme_footer }}
