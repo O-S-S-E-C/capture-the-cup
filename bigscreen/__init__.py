@@ -78,13 +78,14 @@ PAGE = """<!DOCTYPE html>
 <!-- Pull in the theme's own stylesheet so fonts/colors match the site -->
 <link rel="stylesheet" href="/themes/mytheme/static/custom/css/capture-the-cup.css">
 <style>
- /* Change these 5 values to match your theme exactly */
  :root{
-   --bs-bg:#0b0f1a;
-   --bs-panel:#151b2e;
-   --bs-accent:#f5c542;
-   --bs-text:#ffffff;
-   --bs-blood:#7a0000;
+   --bs-bg:#080b14;
+   --bs-panel:#121a2b;
+   --bs-panel-soft:#18233a;
+   --bs-accent:#5eead4;
+   --bs-coral:#ff6b8a;
+   --bs-text:#f4f7fb;
+   --bs-muted:#8793a8;
  }
  *{box-sizing:border-box}
  html,body{height:100%}
@@ -95,29 +96,36 @@ PAGE = """<!DOCTYPE html>
  header img{height:clamp(36px,6vh,64px);width:auto}
  header h1{margin:0;font-size:clamp(1.2rem,3.2vh,2.2rem);letter-spacing:.12em;text-transform:uppercase}
  .live{margin-left:auto;display:flex;align-items:center;gap:.5rem;font-size:clamp(.8rem,1.8vh,1.1rem);opacity:.85}
- .dot{width:.8em;height:.8em;border-radius:50%;background:#2ecc71;animation:pulse 1.4s infinite}
- .dot.off{background:#e74c3c;animation:none}
+ .dot{width:.8em;height:.8em;border-radius:50%;background:var(--bs-accent);animation:pulse 1.4s infinite}
+ .dot.off{background:var(--bs-coral);animation:none}
  @keyframes pulse{50%{opacity:.25}}
- main{display:grid;grid-template-columns:minmax(260px,1fr) 3fr;gap:1.4rem;min-height:0}
+ main{display:grid;grid-template-columns:1fr;min-height:0}
  section{display:flex;flex-direction:column;min-height:0}
  h2{margin:0 0 .7rem;color:var(--bs-accent);letter-spacing:.14em;font-size:clamp(.9rem,2.2vh,1.3rem)}
  #board{display:grid;grid-auto-flow:column;gap:6px;flex:1;min-height:0;overflow:hidden}
- #bloods{display:flex;flex-direction:column;gap:6px;overflow:hidden}
  .row{display:flex;align-items:center;justify-content:space-between;gap:.8rem;
       background:var(--bs-panel);border-radius:8px;padding:0 1rem;min-width:0;
       border-left:4px solid transparent}
  .row .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
  .row .rk{display:inline-block;min-width:2.2em;opacity:.7}
  .row b{color:var(--bs-accent);font-variant-numeric:tabular-nums}
- .row.r1{border-left-color:#f5c542}
+ .row.r1{border-left-color:var(--bs-accent)}
  .row.r2{border-left-color:#c0c7d1}
- .row.r3{border-left-color:#cd7f32}
+ .row.r3{border-left-color:var(--bs-coral)}
  .row.up{animation:flash 1.6s}
- @keyframes flash{0%{background:#1f6f3c;transform:scale(1.02)}100%{background:var(--bs-panel);transform:none}}
- #bloods .row{padding:.55rem .9rem;font-size:clamp(.85rem,2vh,1.2rem)}
- .empty{opacity:.5;padding:1rem}
+ @keyframes flash{0%{background:#164e63;transform:scale(1.02)}100%{background:var(--bs-panel);transform:none}}
+ .empty{color:var(--bs-muted);padding:1rem}
+ .first-blood-card{position:fixed;top:5.8rem;right:1.6rem;width:min(23rem,38vw);padding:1rem 1.1rem 1.1rem;background:linear-gradient(145deg,var(--bs-panel-soft),var(--bs-panel));border:1px solid rgba(94,234,212,.34);border-radius:14px;box-shadow:0 18px 45px rgba(0,0,0,.35);z-index:4;overflow:hidden}
+ .first-blood-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--bs-coral)}
+ .first-blood-card::after{content:"";position:absolute;width:8rem;height:8rem;right:-4rem;top:-4rem;border-radius:50%;background:rgba(94,234,212,.12);filter:blur(2px)}
+ .first-blood-label{display:flex;align-items:center;gap:.5rem;color:var(--bs-accent);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+ .first-blood-label span{display:block;width:.5rem;height:.5rem;border-radius:50%;background:var(--bs-coral);box-shadow:0 0 0 .25rem rgba(255,107,138,.14)}
+ .first-blood-team{position:relative;margin:.55rem 0 .2rem;color:var(--bs-text);font-size:clamp(1.15rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .first-blood-challenge{position:relative;color:var(--bs-text);font-size:clamp(.85rem,1.4vw,1rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .first-blood-meta{position:relative;margin-top:.4rem;color:var(--bs-muted);font-size:.75rem}
+ .first-blood-card.empty{opacity:.72}
  #overlay{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
-   background:radial-gradient(circle,var(--bs-blood),#1a0000);text-align:center;z-index:10;padding:2rem}
+   background:radial-gradient(circle at 50% 30%,#164e63,#080b14 70%);text-align:center;z-index:10;padding:2rem}
  #overlay.show{display:flex;animation:pop .5s}
  #overlay .big{font-size:clamp(2.5rem,11vh,7rem);font-weight:800;letter-spacing:.05em}
  #overlay .team{font-size:clamp(2rem,9vh,6rem);color:var(--bs-accent);margin:1rem 0;word-break:break-word}
@@ -125,8 +133,11 @@ PAGE = """<!DOCTYPE html>
  #overlay .by{font-size:clamp(1rem,3vh,2rem);opacity:.8;margin-top:.8rem}
  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
  @media (max-width:900px){
-   main{grid-template-columns:1fr;grid-template-rows:auto 1fr}
-   #bloods .row:nth-child(n+4){display:none}
+   .first-blood-card{top:5.4rem;right:1rem;width:min(19rem,calc(100vw - 2rem))}
+ }
+ @media (max-width:620px){
+   .app{padding:.9rem 1rem;gap:.7rem}
+   .first-blood-card{position:fixed;top:auto;right:1rem;bottom:1rem;width:calc(100vw - 2rem)}
  }
 </style></head><body>
 <div class="app">
@@ -136,9 +147,14 @@ PAGE = """<!DOCTYPE html>
   <div class="live"><span class="dot" id="dot"></span><span id="status">LIVE</span></div>
  </header>
  <main>
-  <section><h2>FIRST BLOODS</h2><div id="bloods"></div></section>
   <section><h2>SCOREBOARD <span id="count" style="opacity:.6"></span></h2><div id="board"></div></section>
  </main>
+ <aside class="first-blood-card empty" id="first-blood-card" aria-live="polite">
+  <div class="first-blood-label"><span></span> FIRST BLOOD</div>
+  <div class="first-blood-team" id="fb-team">Waiting for the first solve</div>
+  <div class="first-blood-challenge" id="fb-challenge">The next capture will appear here</div>
+  <div class="first-blood-meta" id="fb-meta"></div>
+ </aside>
 </div>
 <div id="overlay">
  <div class="big">&#129656; FIRST BLOOD</div>
@@ -149,7 +165,7 @@ PAGE = """<!DOCTYPE html>
 <script>
 const key = new URLSearchParams(location.search).get("key");
 const $ = id => document.getElementById(id);
-const boardEl = $("board"), bloodsEl = $("bloods"), overlay = $("overlay");
+const boardEl = $("board"), overlay = $("overlay");
 const ESC = {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"};
 const esc = s => String(s).replace(/[&<>"]/g, c => ESC[c]);
 
@@ -165,6 +181,16 @@ function next(){
   $("ob").textContent = b.user !== b.team ? "solved by " + b.user : "";
   overlay.className = "show";
   setTimeout(() => { overlay.className = ""; setTimeout(next, 500); }, 8000);
+}
+
+function renderFirstBlood(bloods){
+  const latest = bloods[bloods.length - 1];
+  const card = $("first-blood-card");
+  if(!latest){ return; }
+  card.classList.remove("empty");
+  $("fb-team").textContent = latest.team;
+  $("fb-challenge").textContent = latest.challenge + " / " + latest.category;
+  $("fb-meta").textContent = latest.user !== latest.team ? "solved by " + latest.user : "first solve recorded";
 }
 
 /* ---------- dynamic layout: fits any number of players on any screen ---------- */
@@ -219,11 +245,7 @@ async function tick(){
     }
     if(!showing) next();
 
-    bloodsEl.innerHTML = d.bloods.length
-      ? d.bloods.slice().reverse().slice(0, 8).map(b =>
-          '<div class="row"><span class="nm">&#129656; ' + esc(b.challenge) + '</span><b>' + esc(b.team) + '</b></div>').join("")
-      : '<div class="empty">No first blood yet</div>';
-
+    renderFirstBlood(d.bloods);
     render(d.standings);
     $("dot").className = "dot"; $("status").textContent = "LIVE";
   }catch(e){
