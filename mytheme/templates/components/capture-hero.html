@@ -1,7 +1,115 @@
-<section class="ct-capture-hero" aria-labelledby="ct-hero-title">
-  <img class="ct-hero-logo" src="{{ url_for('views.themes_beta', theme='mytheme', path='img/logo1.png') }}" alt="Capture the Cup">
-  <p class="ct-hero-kicker"><span></span> The arena is live</p>
-  <h1 id="ct-hero-title">Capture the Cup</h1>
-  <p class="ct-hero-intro">Think fast. Break clean. Take the lead.</p>
-  <a class="btn btn-primary ct-hero-cta" href="/register">Enter the arena <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+{# ===== EDIT THESE TWO LINKS ===== #}
+{% set DISCORD_URL = "https://discord.gg/HPGMpyUfr" %}
+{% set CLUB_URL = "https://ossec.me" %}
+
+<section class="ctx" id="ctx">
+<style>
+.ctx{--c:#38bdf8;--c2:#75d8ff;--r:#f23856;position:relative;min-height:calc(100vh - var(--ct-nav-h,76px));display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.ctx canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.ctx::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 78% 45%,rgba(56,189,248,.16),transparent 70%),radial-gradient(50% 60% at 15% 90%,rgba(242,56,86,.14),transparent 70%),linear-gradient(transparent 60%,#070b14)}
+.ctx-main{flex:1;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:2rem;width:min(1240px,92vw);margin:0 auto;padding:3rem 0 2rem}
+.ctx-tag{display:inline-flex;align-items:center;gap:.7rem;font-size:.72rem;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--c2)}
+.ctx-tag i{width:34px;height:2px;background:linear-gradient(90deg,var(--r),transparent)}
+.ctx-tag b{width:8px;height:8px;border-radius:50%;background:var(--r);box-shadow:0 0 14px var(--r);animation:ctx-p 1.4s infinite}
+@keyframes ctx-p{50%{opacity:.3}}
+.ctx h1{margin:1rem 0 0;font-family:Raleway,Lato,sans-serif;font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.01em;transform:skewX(-8deg);font-size:clamp(3.2rem,9.5vw,8.2rem)}
+.ctx h1 span{display:block;position:relative}
+.ctx h1 .l2{font-size:.42em;letter-spacing:.5em;color:transparent;-webkit-text-stroke:1.5px var(--c2);margin:.15em 0}
+.ctx h1 .l3{background:linear-gradient(90deg,#fff,var(--c2) 45%,var(--r));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ctx h1 .l1::before,.ctx h1 .l1::after{content:attr(data-t);position:absolute;inset:0;opacity:0}
+.ctx h1 .l1::before{color:var(--c);transform:translate(-4px,0)}
+.ctx h1 .l1::after{color:var(--r);transform:translate(4px,0)}
+.ctx h1 .l1.g::before,.ctx h1 .l1.g::after{opacity:.85;animation:ctx-g .3s steps(2) 2}
+@keyframes ctx-g{0%{clip-path:inset(10% 0 60% 0)}50%{clip-path:inset(55% 0 10% 0)}100%{clip-path:inset(30% 0 35% 0)}}
+.ctx-sub{margin:1.6rem 0 0;max-width:34rem;font-size:1.15rem;font-weight:700;color:#b8c4d6}
+.ctx-sub em{font-style:normal;color:#fff;border-bottom:2px solid var(--r)}
+.ctx-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+.ctx-b{--bg:var(--r);display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 1.6rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;color:#fff!important;background:var(--bg);
+ clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);transition:transform .2s,filter .2s}
+.ctx-b:hover{transform:translateY(-3px);filter:brightness(1.15) drop-shadow(0 8px 18px var(--bg))}
+.ctx-b.d{--bg:#5865f2}
+.ctx-b.o{background:none;position:relative;box-shadow:inset 0 0 0 1.5px rgba(117,216,255,.55);color:var(--c2)!important}
+.ctx-b.o:hover{background:rgba(56,189,248,.12)}
+.ctx-art{position:relative;display:grid;place-items:center;aspect-ratio:1;perspective:900px}
+.ctx-art::before{content:"";position:absolute;inset:-18%;background:repeating-conic-gradient(rgba(56,189,248,.2) 0 5deg,transparent 5deg 10deg,rgba(242,56,86,.17) 10deg 15deg,transparent 15deg 20deg);
+ -webkit-mask:radial-gradient(circle,#000 5%,transparent 62%);mask:radial-gradient(circle,#000 5%,transparent 62%);animation:ctx-s 50s linear infinite}
+@keyframes ctx-s{to{transform:rotate(360deg)}}
+.ctx-art img{position:relative;width:86%;transition:transform .15s;filter:drop-shadow(0 0 40px rgba(56,189,248,.35)) drop-shadow(0 22px 26px rgba(0,0,0,.6));animation:ctx-f 5s ease-in-out infinite}
+@keyframes ctx-f{50%{margin-top:-14px}}
+.ctx-art s{position:absolute;width:15%;aspect-ratio:1;border:2px solid var(--c2);opacity:.8}
+.ctx-art s:nth-of-type(1){top:6%;left:6%;border-right:0;border-bottom:0}
+.ctx-art s:nth-of-type(2){bottom:6%;right:6%;border-left:0;border-top:0;border-color:var(--r)}
+.ctx-tick{border-block:1px solid rgba(153,181,219,.2);background:rgba(7,11,20,.7);backdrop-filter:blur(6px);overflow:hidden;white-space:nowrap;transform:skewY(-1.2deg);margin-bottom:1.2rem}
+.ctx-tick div{display:inline-block;padding:.8rem 0;font-weight:900;font-size:.8rem;letter-spacing:.35em;text-transform:uppercase;color:#91a0b6;animation:ctx-m 28s linear infinite}
+.ctx-tick span{color:var(--r);margin:0 1.4rem}
+@keyframes ctx-m{to{transform:translateX(-50%)}}
+.ctx-in{opacity:0;transform:translateY(24px);animation:ctx-i .8s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes ctx-i{to{opacity:1;transform:none}}
+@media(max-width:900px){.ctx-main{grid-template-columns:1fr;text-align:center;padding-top:1.5rem}.ctx-art{order:-1;width:min(70vw,340px);margin:0 auto}.ctx-cta,.ctx-tag{justify-content:center}.ctx-sub{margin-inline:auto}.ctx h1{transform:none}}
+@media(prefers-reduced-motion:reduce){.ctx *,.ctx::before{animation:none!important}.ctx-in{opacity:1;transform:none}}
+</style>
+
+<canvas id="ctx-cv" aria-hidden="true"></canvas>
+
+<div class="ctx-main">
+  <div>
+    <div class="ctx-tag ctx-in"><b></b>The arena is live<i></i></div>
+    <h1 class="ctx-in" style="animation-delay:.1s" aria-label="Capture the Cup">
+      <span class="l1" id="ctx-l1" data-t="Capture">Capture</span>
+      <span class="l2">the</span>
+      <span class="l3">Cup</span>
+    </h1>
+    <p class="ctx-sub ctx-in" style="animation-delay:.3s">Think fast. Break clean. <em>Take the lead.</em></p>
+    <div class="ctx-cta ctx-in" style="animation-delay:.45s">
+      {% if authed() %}
+        <a class="ctx-b" href="/challenges">Open challenges <i class="fas fa-arrow-right"></i></a>
+        <a class="ctx-b o" href="/scoreboard"><i class="fas fa-trophy"></i> Scoreboard</a>
+      {% else %}
+        <a class="ctx-b" href="/register">Enter the arena <i class="fas fa-arrow-right"></i></a>
+        <a class="ctx-b o" href="/login">Log in</a>
+      {% endif %}
+      <a class="ctx-b d" href="{{ DISCORD_URL }}" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join Discord</a>
+      <a class="ctx-b o" href="{{ CLUB_URL }}" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Club website</a>
+    </div>
+  </div>
+  <div class="ctx-art ctx-in" style="animation-delay:.25s" id="ctx-art">
+    <s></s><s></s>
+    <img src="{{ url_for('views.themes_beta', theme='mytheme', path='img/logo1.png') }}" alt="Capture the Cup">
+  </div>
+</div>
+
+<div class="ctx-tick" aria-hidden="true"><div id="ctx-tk"></div></div>
+
+<script>
+(function(){
+  var tk=document.getElementById('ctx-tk'),t='Capture the Cup<span>//</span>Think fast<span>//</span>Break clean<span>//</span>Take the lead<span>//</span>',h='';
+  for(var i=0;i<8;i++)h+=t; tk.innerHTML=h;
+
+  var l1=document.getElementById('ctx-l1');
+  setInterval(function(){l1.classList.add('g');setTimeout(function(){l1.classList.remove('g')},600)},6000);
+
+  var art=document.getElementById('ctx-art'),img=art.querySelector('img');
+  document.getElementById('ctx').addEventListener('mousemove',function(e){
+    var r=art.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    img.style.transform='rotateY('+x*14+'deg) rotateX('+(-y*14)+'deg)';
+  });
+
+  var cv=document.getElementById('ctx-cv'),g=cv.getContext('2d'),P=[],W,H;
+  function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight}
+  function mk(init){return{x:Math.random()*W,y:init?Math.random()*H:H+10,v:.3+Math.random()*1.1,s:1+Math.random()*2.2,c:Math.random()<.6?'56,189,248':'242,56,86',a:.25+Math.random()*.6}}
+  size();window.addEventListener('resize',size);
+  for(var i=0;i<70;i++)P.push(mk(true));
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  (function f(){
+    g.clearRect(0,0,W,H);
+    P.forEach(function(p,i){
+      p.y-=p.v;p.x+=Math.sin(p.y/60)*.3;
+      if(p.y<-10)P[i]=mk(false);
+      g.fillStyle='rgba('+p.c+','+p.a+')';g.shadowColor='rgb('+p.c+')';g.shadowBlur=8;
+      g.fillRect(p.x,p.y,p.s,p.s*2.4);
+    });
+    requestAnimationFrame(f);
+  })();
+})();
+</script>
 </section>
