@@ -136,8 +136,11 @@ h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9re
  background:repeating-conic-gradient(rgba(56,189,248,.2) 0 6deg,transparent 6deg 12deg,rgba(242,56,86,.16) 12deg 18deg,transparent 18deg 24deg);
  -webkit-mask:radial-gradient(circle,#000,transparent 55%);mask:radial-gradient(circle,#000,transparent 55%);animation:spin 40s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.whiteout{position:absolute;inset:0;background:#fff;pointer-events:none;animation:whiteout 1s both}
-@keyframes whiteout{from{opacity:.85}to{opacity:0}}
+.whiteout{position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:screen;
+ background:radial-gradient(ellipse at 50% 42%,rgba(255,255,255,.72),rgba(56,189,248,.34) 20%,transparent 54%),
+ linear-gradient(105deg,rgba(56,189,248,.28),transparent 38%,transparent 62%,rgba(242,56,86,.34));
+ animation:impactFlash 1.05s cubic-bezier(.16,.8,.24,1) both}
+@keyframes impactFlash{0%{opacity:0}7%{opacity:1}18%{opacity:.18}29%{opacity:.72}43%,100%{opacity:0}}
 .cupwrap{position:relative;z-index:2}
 .cupwrap svg{width:clamp(150px,32vh,320px);height:auto;filter:drop-shadow(0 0 34px rgba(247,183,51,.6));
  animation:rise 1.1s cubic-bezier(.2,1.5,.3,1) both,float 3.2s ease-in-out 1.1s infinite}
@@ -168,7 +171,7 @@ h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9re
 #gate span{color:var(--muted)}
 @media(max-width:900px){.fb-card{top:5.4rem;right:1rem;width:min(19rem,calc(100vw - 2rem))}}
 @media(max-width:620px){.app{padding:.9rem 1rem}.fb-card{top:auto;bottom:1rem;right:1rem;width:calc(100vw - 2rem)}}
-@media(prefers-reduced-motion:reduce){.rays,.cupwrap svg,#gate svg{animation:none}}
+@media(prefers-reduced-motion:reduce){.rays,.cupwrap svg,#gate svg{animation:none}.whiteout{animation:none;opacity:0}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3bf"/><stop offset=".45" stop-color="#f7b733"/><stop offset="1" stop-color="#a8651a"/></linearGradient>
