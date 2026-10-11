@@ -96,7 +96,7 @@
     img.style.transform='rotateY('+x*14+'deg) rotateX('+(-y*14)+'deg)';
   });
 
-  // quiet background particles
+  
   var cv=document.getElementById('ctx-cv'),g=cv.getContext('2d'),P=[],W,H;
   function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight}
   function mk(init){return{x:Math.random()*W,y:init?Math.random()*H:H+10,v:.2+Math.random()*.7,s:1+Math.random()*1.6,c:Math.random()<.7?'56,189,248':'242,56,86',a:.15+Math.random()*.35}}

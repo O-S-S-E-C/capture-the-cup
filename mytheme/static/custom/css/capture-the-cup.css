@@ -162,3 +162,17 @@ label, .form-label { color: var(--ct-ink); font-size: .78rem; font-weight: 800; 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+/* ===== 1. Pitch background (blue half / red half, neon lines) =====
+   Paste this at the very END of static/custom/css/capture-the-cup.css
+   !important is needed because the compiled theme CSS sets the old grid with !important */
+body {
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(56, 189, 248, .14), transparent 30%),
+    radial-gradient(circle at 90% 25%, rgba(242, 56, 86, .1), transparent 28%),
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1050'%20height='680'%20viewBox='0%200%201050%20680'%3E%3Cdefs%3E%3Cfilter%20id='g'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeGaussianBlur%20stdDeviation='5'/%3E%3C/filter%3E%3C/defs%3E%3Cg%20opacity='.3'%20stroke-width='6'%20filter='url(%23g)'%3E%3Cg%20stroke='%2375d8ff'%20fill='none'%3E%3Crect%20x='40'%20y='40'%20width='970'%20height='600'/%3E%3Cline%20x1='525'%20y1='40'%20x2='525'%20y2='640'/%3E%3Ccircle%20cx='525'%20cy='340'%20r='92'/%3E%3Ccircle%20cx='525'%20cy='340'%20r='4'%20fill='%2375d8ff'/%3E%3C/g%3E%3Cg%20stroke='%2338bdf8'%20fill='none'%3E%3Crect%20x='40'%20y='139'%20width='165'%20height='402'/%3E%3Crect%20x='40'%20y='249'%20width='55'%20height='182'/%3E%3Cpath%20d='M205%20266.3%20A92%2092%200%200%201%20205%20413.7'/%3E%3Ccircle%20cx='150'%20cy='340'%20r='3'%20fill='%2338bdf8'/%3E%3C/g%3E%3Cg%20stroke='%23f23856'%20fill='none'%3E%3Crect%20x='845'%20y='139'%20width='165'%20height='402'/%3E%3Crect%20x='955'%20y='249'%20width='55'%20height='182'/%3E%3Cpath%20d='M845%20266.3%20A92%2092%200%200%200%20845%20413.7'/%3E%3Ccircle%20cx='900'%20cy='340'%20r='3'%20fill='%23f23856'/%3E%3C/g%3E%3C/g%3E%3Cg%20opacity='.34'%20stroke-width='1.5'%3E%3Cg%20stroke='%2375d8ff'%20fill='none'%3E%3Crect%20x='40'%20y='40'%20width='970'%20height='600'/%3E%3Cline%20x1='525'%20y1='40'%20x2='525'%20y2='640'/%3E%3Ccircle%20cx='525'%20cy='340'%20r='92'/%3E%3Ccircle%20cx='525'%20cy='340'%20r='4'%20fill='%2375d8ff'/%3E%3C/g%3E%3Cg%20stroke='%2338bdf8'%20fill='none'%3E%3Crect%20x='40'%20y='139'%20width='165'%20height='402'/%3E%3Crect%20x='40'%20y='249'%20width='55'%20height='182'/%3E%3Cpath%20d='M205%20266.3%20A92%2092%200%200%201%20205%20413.7'/%3E%3Ccircle%20cx='150'%20cy='340'%20r='3'%20fill='%2338bdf8'/%3E%3C/g%3E%3Cg%20stroke='%23f23856'%20fill='none'%3E%3Crect%20x='845'%20y='139'%20width='165'%20height='402'/%3E%3Crect%20x='955'%20y='249'%20width='55'%20height='182'/%3E%3Cpath%20d='M845%20266.3%20A92%2092%200%200%200%20845%20413.7'/%3E%3Ccircle%20cx='900'%20cy='340'%20r='3'%20fill='%23f23856'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    repeating-linear-gradient(90deg, rgba(61, 255, 143, .022) 0 90px, transparent 90px 180px) !important;
+  background-size: auto, auto, cover, auto !important;
+  background-position: 0 0, 0 0, center, 0 0;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-attachment: fixed;
+}

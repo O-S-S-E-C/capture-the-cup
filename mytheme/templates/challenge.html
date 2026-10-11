@@ -355,5 +355,16 @@
         </div>
       </div>
     </div>
+
+    {# Green "goal" overlay shown briefly when the flag is correct. Styled in capture-the-cup.css (.ct-goal) #}
+    <template x-if="response && response.data.status == 'correct'">
+      <div class="ct-goal" aria-hidden="true">
+        <div class="ct-goal-inner">
+          <i class="fas fa-futbol"></i>
+          <strong>{% trans %}Goal!{% endtrans %}</strong>
+          <span>+{{ challenge.value }} {% trans %}points{% endtrans %}</span>
+        </div>
+      </div>
+    </template>
   </div>
 </div>
