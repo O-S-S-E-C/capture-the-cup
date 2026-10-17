@@ -131,12 +131,12 @@ h1,h2,.title{font-family:Raleway,Lato,sans-serif}
 .pitch svg{position:absolute;inset:0;width:100%;height:100%}
 
 .app{position:relative;z-index:1;display:grid;grid-template-rows:auto 1fr;height:100vh;padding:1.2rem 1.6rem;gap:1rem}
-header{position:relative;display:flex;align-items:center;gap:1rem;padding-bottom:.9rem}
+header{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding-bottom:.9rem}
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
  background:linear-gradient(90deg,var(--blue),var(--red));box-shadow:0 0 14px rgba(47,140,255,.7),0 0 14px rgba(255,45,85,.5)}
 header img{height:clamp(36px,6vh,64px)}
 header h1{margin:0;font-size:clamp(1.2rem,3.2vh,2.2rem);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 18px rgba(56,189,248,.45)}
-.live{margin-left:auto;display:flex;align-items:center;gap:.5rem;font-size:clamp(.8rem,1.8vh,1.1rem);color:var(--cyan2)}
+.live{margin-left:1.2rem;display:flex;align-items:center;gap:.5rem;font-size:clamp(.8rem,1.8vh,1.1rem);color:var(--cyan2)}
 .dot{width:.7em;height:.7em;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 1.4s infinite}
 .dot.off{background:var(--red);box-shadow:0 0 10px var(--red);animation:none}
 @keyframes pulse{50%{opacity:.25}}
@@ -156,15 +156,17 @@ h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9re
 .row.up{animation:rowflash 1.6s}
 @keyframes rowflash{0%{background:#12466a;transform:scale(1.02)}100%{transform:none}}
 .empty{color:var(--muted);padding:1rem}
-.fb-card{position:fixed;top:5.8rem;right:1.6rem;width:min(23rem,38vw);padding:1rem 1.1rem;z-index:4;
- background:linear-gradient(145deg,var(--raised),var(--panel));border:1px solid var(--line);border-radius:8px;
- box-shadow:0 18px 45px rgba(0,0,0,.45),0 0 24px rgba(47,140,255,.18)}
-.fb-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(var(--blue),var(--red));box-shadow:0 0 12px var(--blue)}
-.fb-label{display:flex;align-items:center;gap:.5rem;color:var(--red2);font-size:.72rem;font-weight:800;letter-spacing:.18em}
-.fb-label svg{width:1.6rem;height:1.6rem}
-.fb-team{margin:.5rem 0 .2rem;font-family:Raleway,Lato,sans-serif;font-size:clamp(1.15rem,2.2vw,1.7rem);font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fb-chal{font-size:clamp(.85rem,1.3vw,1rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fb-meta{margin-top:.35rem;color:var(--muted);font-size:.75rem}
+.fb-card{position:relative;margin-left:auto;display:flex;align-items:center;gap:.8rem;min-width:0;max-width:min(58vw,52rem);
+ padding:.4rem 1.1rem .4rem 1.2rem;background:linear-gradient(145deg,var(--raised),var(--panel));border:1px solid var(--line);border-radius:8px;
+ box-shadow:0 0 24px rgba(47,140,255,.2)}
+.fb-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;border-radius:8px 0 0 8px;background:linear-gradient(var(--blue),var(--red));box-shadow:0 0 12px var(--blue)}
+.fb-ball{width:clamp(30px,4.6vh,46px);height:clamp(30px,4.6vh,46px);flex:none;filter:drop-shadow(0 0 8px rgba(117,216,255,.7))}
+.fb-body{min-width:0}
+.fb-label{color:var(--red2);font-size:clamp(.6rem,1.2vh,.75rem);font-weight:800;letter-spacing:.18em}
+.fb-line{display:flex;align-items:baseline;gap:.8rem;min-width:0;white-space:nowrap}
+.fb-team{font-family:Raleway,Lato,sans-serif;font-size:clamp(1rem,2.6vh,1.6rem);font-weight:800;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
+.fb-chal{font-size:clamp(.8rem,1.8vh,1.05rem);color:var(--cyan2);overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
+.fb-meta{color:var(--muted);font-size:clamp(.7rem,1.4vh,.85rem);overflow:hidden;text-overflow:ellipsis;flex:0 100 auto}
 .fb-card.empty{opacity:.7}
 
 /* =====================================================
@@ -296,8 +298,8 @@ h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9re
 @keyframes bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6vh) rotate(180deg)}}
 #gate b{font-family:Raleway,Lato,sans-serif;letter-spacing:.3em;font-size:clamp(1.2rem,4vh,2.4rem);text-shadow:0 0 22px var(--blue)}
 #gate span{color:var(--muted)}
-@media(max-width:900px){.fb-card{top:5.4rem;right:1rem;width:min(19rem,calc(100vw - 2rem))}}
-@media(max-width:620px){.app{padding:.9rem 1rem}.fb-card{top:auto;bottom:1rem;right:1rem;width:calc(100vw - 2rem)}}
+@media(max-width:900px){.fb-meta{display:none}}
+@media(max-width:620px){.app{padding:.9rem 1rem}.fb-card{order:3;flex-basis:100%;max-width:none;margin-left:0}}
 @media(prefers-reduced-motion:reduce){.rays,#gate svg,.floor,.beam{animation:none}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs></defs>__BALL__</svg>
@@ -314,15 +316,16 @@ h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9re
  <header>
   <img src="/themes/mytheme/static/img/logo1.png" alt="" onerror="this.style.display='none'">
   <h1>Capture the Cup</h1>
+  <aside class="fb-card empty" id="fb" aria-live="polite">
+   <svg class="fb-ball" viewBox="0 0 100 100"><use href="#ball"/></svg>
+   <div class="fb-body">
+    <div class="fb-label">LATEST CAPTURE</div>
+    <div class="fb-line"><span class="fb-team" id="fb-team">Waiting for the first solve</span><span class="fb-chal" id="fb-chal">The next capture will appear here</span><span class="fb-meta" id="fb-meta"></span></div>
+   </div>
+  </aside>
   <div class="live"><span class="dot" id="dot"></span><span id="status">LIVE</span></div>
  </header>
  <main><section><h2>SCOREBOARD <span id="count" style="opacity:.6"></span></h2><div id="board"></div></section></main>
- <aside class="fb-card empty" id="fb" aria-live="polite">
-  <div class="fb-label"><svg viewBox="0 0 100 100"><use href="#ball"/></svg> LATEST CAPTURE</div>
-  <div class="fb-team" id="fb-team">Waiting for the first solve</div>
-  <div class="fb-chal" id="fb-chal">The next capture will appear here</div>
-  <div class="fb-meta" id="fb-meta"></div>
- </aside>
 </div>
 
 <div id="overlay">
