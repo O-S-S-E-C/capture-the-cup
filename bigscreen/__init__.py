@@ -130,8 +130,8 @@ h1,h2,.title{font-family:Raleway,Lato,sans-serif}
   repeating-linear-gradient(90deg,rgba(56,189,248,.03) 0 7vw,transparent 7vw 14vw),var(--night)}
 .pitch svg{position:absolute;inset:0;width:100%;height:100%}
 
-.app{position:relative;z-index:1;display:grid;grid-template-rows:auto 1fr;height:100vh;padding:1.2rem 1.6rem;gap:1rem}
-header{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding-bottom:.9rem}
+.app{position:relative;z-index:1;display:grid;grid-template-rows:auto minmax(0,1fr);height:100vh;padding:.9rem 1.4rem 1rem;gap:.6rem}
+header{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding-bottom:.7rem}
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
  background:linear-gradient(90deg,var(--blue),var(--red));box-shadow:0 0 14px rgba(47,140,255,.7),0 0 14px rgba(255,45,85,.5)}
 header img{height:clamp(36px,6vh,64px)}
@@ -140,15 +140,15 @@ header h1{margin:0;font-size:clamp(1.2rem,3.2vh,2.2rem);letter-spacing:.14em;tex
 .dot{width:.7em;height:.7em;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 1.4s infinite}
 .dot.off{background:var(--red);box-shadow:0 0 10px var(--red);animation:none}
 @keyframes pulse{50%{opacity:.25}}
-main{display:grid;min-height:0}
-section{display:flex;flex-direction:column;min-height:0}
-h2{margin:0 0 .7rem;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.9rem,2.2vh,1.3rem)}
-#board{display:grid;gap:6px;flex:1;min-height:0;overflow:hidden}
+main{display:grid;min-height:0;align-items:stretch;align-content:stretch;padding:0;margin:0}
+.app main section{display:flex;flex-direction:column;min-height:0;padding:0;margin:0;height:100%}
+.app main h2{margin:0 0 .5rem;padding:0;line-height:1.1;color:var(--cyan2);letter-spacing:.18em;font-size:clamp(.85rem,2vh,1.2rem)}
+#board{display:grid;gap:6px;flex:1;min-height:0;overflow:hidden;align-content:start}
 .row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:.8rem;background:linear-gradient(90deg,rgba(19,30,53,.92),rgba(13,21,38,.92));
  border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:0 1rem;min-width:0}
 .nm{display:flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .rk{min-width:2.2em;opacity:.65;font-variant-numeric:tabular-nums}
-.row b{color:var(--cyan2);font-variant-numeric:tabular-nums;background:rgba(5,7,15,.7);border:1px solid var(--line);border-radius:6px;padding:.05em .5em}
+.row b{color:var(--cyan2);font-variant-numeric:tabular-nums;background:rgba(5,7,15,.7);border:1px solid var(--line);border-radius:6px;padding:0 .45em;line-height:1.35}
 .ci{width:1.2em;height:1.2em;margin-right:.45em;flex:none;filter:drop-shadow(0 0 6px rgba(117,216,255,.8))}
 .row.r1{border-left-color:var(--cyan2);border-color:rgba(117,216,255,.55);background:linear-gradient(90deg,rgba(56,189,248,.25),rgba(13,21,38,.92) 60%);box-shadow:0 0 22px rgba(56,189,248,.25)}
 .row.r2{border-left-color:var(--blue);background:linear-gradient(90deg,rgba(47,140,255,.14),rgba(13,21,38,.92) 55%)}
@@ -431,16 +431,17 @@ function renderLatest(bloods){
 }
 
 function layout(n){
-  const H = boardEl.clientHeight, W = boardEl.clientWidth, GAP = 6, MIN = 40, MAX = 76;
+  const H = boardEl.clientHeight, W = boardEl.clientWidth, GAP = 5, MIN = 34, MAX = 58;
   const cap = Math.max(1, Math.floor((H + GAP) / (MIN + GAP)));
-  let cols = Math.min(3, Math.max(1, Math.ceil(n / cap)));
+  let cols = Math.min(4, Math.max(1, Math.ceil(n / cap)));
   if(W < 700) cols = 1;
   const rows = Math.max(1, Math.ceil(n / cols));
   const rowH = Math.max(MIN, Math.min(MAX, Math.floor((H - (rows - 1) * GAP) / rows)));
   boardEl.style.gridAutoFlow = "column";
   boardEl.style.gridTemplateColumns = "repeat(" + cols + ",1fr)";
+  boardEl.style.rowGap = GAP + "px";
   boardEl.style.gridTemplateRows = "repeat(" + rows + "," + rowH + "px)";
-  boardEl.style.fontSize = Math.max(14, rowH * 0.42) + "px";
+  boardEl.style.fontSize = Math.max(13, rowH * 0.4) + "px";
 }
 
 function render(standings){
